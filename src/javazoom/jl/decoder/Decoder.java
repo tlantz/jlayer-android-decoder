@@ -1,4 +1,6 @@
 /*
+ * 03/01/14	 	Removed warning for android build. tim.lantz at gee mail.
+ * 
  * 11/19/04		1.0 moved to LGPL.
  * 01/12/99		Initial version.	mdm@techie.com
  *-----------------------------------------------------------------------
@@ -271,7 +273,6 @@ public class Decoder implements DecoderErrors
 		float scalefactor = 32700.0f;
 		
 		int mode = header.mode();
-		int layer = header.layer();
 		int channels = mode==Header.SINGLE_CHANNEL ? 1 : 2;
 
 					

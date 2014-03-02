@@ -1,4 +1,6 @@
 /*
+ * 03/01/14	 	Removed warning for android build. tim.lantz at gee mail.
+ *
  * 11/19/04	 1.0 moved to LGPL.
  * 
  * 18/06/01  Michael Scheerer,  Fixed bugs which causes
@@ -332,7 +334,6 @@ final class LayerIIIDecoder implements FrameDecoder
 	        // System.out.println("Counter = ................................."+counter);
   	        //if (counter <  609)
   	        //{
-  	            counter++;
   	            buffer.write_buffer(1);
   	        //}
   	        //else if (counter == 609)
@@ -1813,7 +1814,6 @@ final class LayerIIIDecoder implements FrameDecoder
 		}
 	}
 
-    private int counter = 0;
 	private static final int		SSLIMIT=18;
 	private static final int		SBLIMIT=32;
     // Size of the table of whole numbers raised to 4/3 power.
