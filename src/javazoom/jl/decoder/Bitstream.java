@@ -1,4 +1,6 @@
 /*
+ * 03/01/14	 Removed warning for android build. tim.lantz at gee mail.
+ * 
  * 11/19/04  1.0 moved to LGPL.
  * 
  * 11/17/04	 Uncomplete frames discarded. E.B, javalayer@javazoom.net 
@@ -221,7 +223,7 @@ public final class Bitstream implements BitstreamErrors
 			int majorVersion = id3header[0];
 			int revision = id3header[1];
 			in.read(id3header,0,4);
-			size = (int) (id3header[0] << 21) + (id3header[1] << 14) + (id3header[2] << 7) + (id3header[3]);
+			size = (int) (majorVersion << 21) + (revision << 14) + (id3header[2] << 7) + (id3header[3]);
 		}
 		return (size+10);
 	}
@@ -502,19 +504,8 @@ public final class Bitstream implements BitstreamErrors
 	byte[] byteread = frame_bytes;
 	int bytesize = framesize;
 
-	// Check ID3v1 TAG (True only if last frame).
-	//for (int t=0;t<(byteread.length)-2;t++)
-	//{
-	//	if ((byteread[t]=='T') && (byteread[t+1]=='A') && (byteread[t+2]=='G'))
-	//	{
-	//		System.out.println("ID3v1 detected at offset "+t);
-	//		throw newBitstreamException(INVALIDFRAME, null);
-	//	} 	
-	//}
-	
 	for (int k=0;k<bytesize;k=k+4)
 	{
-		int convert = 0;
 		byte b0 = 0;
 		byte b1 = 0;
 		byte b2 = 0;
