@@ -1,6 +1,4 @@
 /*
- * 03/01/14	 	Removed warning for android build. tim.lantz at gee mail.
- *
  * 11/19/04		1.0 moved to LGPL.
  * 12/12/99		Initial version.	mdm@techie.com
  *-----------------------------------------------------------------------
@@ -29,6 +27,5 @@ package javazoom.jl.decoder;
  * class, as per JMF 2.0. 
  */
 public class JavaLayerError extends Error
-{
-	public static final long serialVersionUID = 42L;
+{	
 }

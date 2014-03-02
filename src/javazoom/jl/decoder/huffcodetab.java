@@ -1,6 +1,4 @@
 /*
- * 03/01/14	 	Removed warning for android build. tim.lantz at gee mail.
- *
  * 11/19/04 1.0 moved to LGPL.
  * 16/11/99 Renamed class, added javadoc, and changed table
  *			name from String to 3 chars. mdm@techie.com
@@ -51,10 +49,15 @@ final class huffcodetab
   
   private char				 tablename0 = ' ';      /* string, containing table_description   */
   private char				 tablename1 = ' ';      /* string, containing table_description   */
+  private char				 tablename2 = ' ';      /* string, containing table_description   */
   
   private int				 xlen; 			        /* max. x-index+                          */
   private int				 ylen;	                /* max. y-index+				          */
   private int				 linbits; 		        /* number of linbits   	                  */
+  private int 				 linmax;		        /* max number to be stored in linbits	  */
+  private int				 ref;			        /* a positive value indicates a reference */
+  private int[]				 table=null;	        /* pointer to array[xlen][ylen]		      */
+  private int[]   			 hlen=null;             /* pointer to array[xlen][ylen]		      */
   private int[][]			 val=null;		        /* decoder tree		    	              */
   private int 				 treelen;	            /* length of decoder tree  	              */
 
@@ -413,6 +416,8 @@ final class huffcodetab
 
 
   public static huffcodetab[]  ht = null;     /* Simulate extern struct                 */
+
+  private static int[] bitbuf = new int[32];
   
   /**
    * Big Constructor : Computes all Huffman Tables.
@@ -422,9 +427,14 @@ final class huffcodetab
   {
     tablename0 = S.charAt(0);
 	tablename1 = S.charAt(1);
+	tablename2 = S.charAt(2);
     xlen = XLEN;
     ylen = YLEN;
     linbits = LINBITS;
+    linmax = LINMAX;
+    ref = REF;
+    table = TABLE;
+    hlen = HLEN;
     val = VAL;
     treelen = TREELEN;
   }
@@ -443,6 +453,7 @@ final class huffcodetab
 	// 32,33 count1-tables
 
 	int dmask = 1 << ((4 * 8) - 1);
+	int hs    = 4 * 8;
   	int level;
   	int point = 0;
   	int error = 1;

@@ -1,6 +1,4 @@
 /*
- * 03/01/14	 	Removed warning for android build. tim.lantz at gee mail.
- *
  * 11/19/04		1.0 moved to LGPL.
  * 01/12/99		Initial version.	mdm@techie.com
  *-----------------------------------------------------------------------
@@ -30,9 +28,7 @@ package javazoom.jl.decoder;
  */
 public class DecoderException extends JavaLayerException
 	implements DecoderErrors
-{
-	public static final long serialVersionUID = 42L;
-	
+{	
 	private int		errorcode = UNKNOWN_ERROR;
 	
 	public DecoderException(String msg, Throwable t)

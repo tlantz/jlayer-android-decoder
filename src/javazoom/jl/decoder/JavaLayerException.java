@@ -1,6 +1,4 @@
 /*
- * 03/01/14	 	Removed warning for android build. tim.lantz at gee mail.
- *
  * 11/19/04		1.0 moved to LGPL.
  * 12/12/99		Initial version.	mdm@techie.com
  *-----------------------------------------------------------------------
@@ -36,7 +34,6 @@ import java.io.PrintStream;
  */
 public class JavaLayerException extends Exception
 {
-	public static final long serialVersionUID = 42L;
 	
 	private Throwable		exception;
 	
